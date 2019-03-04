@@ -1,5 +1,11 @@
 close all;
 
+% Implementation of harmonizer using 
+% peak-translation method described by
+% Jean Laroche and Mark Dolson in following paper:
+% "NEW PHASE-VOCODER TECHNIQUES FOR PITCH-SHIFTING, HARMONIZING AND OTHER EXOTIC EFFECTS"
+% http://www.ee.columbia.edu/~dpwe/papers/LaroD99-pvoc.pdf
+
 [input, Fs] = audioread('sax.wav');
 y = input(:, 1)';
 
@@ -31,7 +37,7 @@ while stop ~= 1
 end
 
 % 2. Processing
-O = zeros(size(Y, 1), size(Y, 2));
+O = zeros(size(Y, 1), size(Y, 2)); % output frames
 zu = ones(length(harmony), maxPeaks); % phase accumulator
 zuf = zeros(length(harmony), maxPeaks); % holds bin frequency
 for fI = 1:size(Y, 2)
