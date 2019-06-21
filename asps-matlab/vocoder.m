@@ -8,14 +8,14 @@ hopSize = 512;
 fftSize = 4096;
 
 % harmony in semitones
-harmony = [-11 8 13];
+harmony = [12];
 gain = [0.8 0.8 0.8];
 
 % frequency difference toleration
-ftol = 50;
+ftol = 20;
 
 % number peaks used for synthesis (the N-most prominent peaks are selected)
-peaksCount = 15;
+peaksCount = 50;
 
 %% Split signal into frames
 framesCount = floor((length(input) - hopSize) / (winSize - hopSize));
